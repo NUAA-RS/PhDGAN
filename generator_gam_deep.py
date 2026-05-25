@@ -6,7 +6,7 @@ from Resnetblock import ResnetBlock
 import functools
 
 
-class DeepUnfoldedGammaLayer(nn.Module):
+class GPEM(nn.Module):
     """深度展开的Gamma参数估计模块"""
 
     def __init__(self, window_size=7, init_weights=True):
@@ -66,7 +66,7 @@ class EnhancedGenerator(nn.Module):
             use_bias = nn.BatchNorm2d == nn.InstanceNorm2d
         # 散射特征提取模块
         # self.scattering_extractor = ScatteringFeatureExtractor(in_channels)
-        self.gamma_layer = DeepUnfoldedGammaLayer()
+        self.gamma_layer = GPEM()
 
         # 编码器
         self.encoder = nn.Sequential(
